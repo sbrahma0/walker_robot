@@ -1,0 +1,6 @@
+sayan@sayan-Aspire-V3-574G:~/catkin_ws/src/walker_robot$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+Done processing ./include/walker.hpp
+Done processing ./src/main.cpp
+Done processing ./src/walker.cpp
+sayan@sayan-Aspire-V3-574G:~/catkin_ws/src/walker_robot$ 
+
