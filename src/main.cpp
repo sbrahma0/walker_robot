@@ -37,6 +37,13 @@
  *
  *  Created on: 15-Nov-2019
  *      Author: sayan Brahma
+ *
+ *  @section DESCRIPTION
+ *
+ *  This program is an obstacle avoidance program. It achieves this
+ *  by moving forward until it meets an obstacle. When this happens
+ *  it rotates in place until the obstacle is cleared and the again
+ *  move forwards.
  */
 
 #include "walker.hpp"
@@ -44,8 +51,8 @@
 /**
  * @brief      main function
  *
- * @param[in]  argc  
- * @param[in]  argv  
+ * @param[in]  argc
+ * @param[in]  argv
  *
  * @return     0 for successful execution
  */
@@ -58,3 +65,4 @@ int main(int argc, char* argv[]) {
   walker.navigate_Bot();
   return 0;
 }
+

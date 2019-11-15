@@ -37,7 +37,15 @@
  *
  * Created on: Nov 14, 2019
  * @author: sayan Brahma
- * @brief ENPM808X ASSIHNMENT - Turtlebot
+ * @brief ENPM808X ASSIGNMENT - Turtlebot - walker node implementation
+ *
+ * @section DESCRIPTION
+ *
+ * This file defines the walker class method implementation.
+ * The class contains laserscan callback and navigate methods which allows
+ * the turtlebot to navigate and subscribe to the laserscan data to detect
+ * obstacles nearby and avoid collisions. Hence the turtlebot follows a
+ * simple walker algorithm like a roomba robot.
  */
 
 // CPP header
@@ -45,6 +53,9 @@
 // walker_robot class header
 #include "walker.hpp"
 
+/**
+ * @brief Constructor for initializing the default values
+ */
 walker::walker() {
   ROS_INFO_STREAM("turtlebot_walker node initialized");
   // Initialize class params
@@ -64,7 +75,9 @@ walker::walker() {
   // publish the initial velocities
   velPub.publish(msg);
 }
-
+/**
+ * @brief Destructor for the walker class
+ */
 walker::~walker() {
   // stop the turtlebot before exiting
   msg.linear.x = 0.0;
@@ -76,9 +89,11 @@ walker::~walker() {
   // publish the  final velocities
   velPub.publish(msg);
 }
-
-void walker::laser_ScanCallback(
-    const sensor_msgs::LaserScan::ConstPtr& msg) {
+/**
+ * @brief This function returns whether the turtlebot in in collition range
+ * @param msg - Takes the range msg from the sensor
+ */
+void walker::laser_ScanCallback(const sensor_msgs::LaserScan::ConstPtr& msg) {
   // Loop though the laserscan mesages to check collision
   for (int i = 0; i < msg->ranges.size(); ++i) {
     // Minimum threshold  distance for collision = 0.60
@@ -90,12 +105,18 @@ void walker::laser_ScanCallback(
   collision = false;
   return;
 }
-
+/**
+ * @brief This function detects obstacles in the path
+ * @return status whether there is any obstacle or not
+ */
 bool walker::detectObstacle() {
   // return the collision flag
   return collision;
 }
-
+/**
+ * @brief This function controls all the movements
+ * and decisions to be made if there is any obstacle.
+ */
 void walker::navigate_Bot() {
   // Initialize the publisher freq
   ros::Rate loop_rate(10);
@@ -122,6 +143,5 @@ void walker::navigate_Bot() {
     loop_rate.sleep();
   }
 }
-
 
 
