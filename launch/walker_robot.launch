@@ -1,7 +1,7 @@
 <launch>
 
   <node 
-    pkg="walker" 
+    pkg="walker_robot" 
     name="walker" 
     type="walker"
     output="screen"
