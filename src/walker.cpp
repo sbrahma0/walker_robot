@@ -111,7 +111,7 @@ void walker::navigate_Bot() {
     } else {
       ROS_INFO_STREAM("No obstacle ahead, moving straight");
       // If no obstacle, keep moving forward
-      msg.linear.x = 0.8;
+      msg.linear.x = 0.3;
       msg.angular.z = 0.0;
     }
     // Publish the updated velocities
